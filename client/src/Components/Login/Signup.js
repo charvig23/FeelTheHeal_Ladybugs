@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import './Login.css';
 import { Link } from 'react-router-dom';
-import Header from '../Header/Header';
-import Footer from '../Footer/Footer';
-
+import Header from '../Header/Header.js';
+import Footer from '../Footer/Footer.js';
 function Signup() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');

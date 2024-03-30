@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Donation.css';
-import Footer from '../Footer/Footer';
-import Header from '../Header/Header';
+import Header from '../Header/Header.js';
+import Footer from '../Footer/Footer.js';
 
 // Sample data for listings
 const listingsData = [
