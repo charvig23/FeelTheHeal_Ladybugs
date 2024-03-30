@@ -1,0 +1,62 @@
+
+body {
+    width: 100vw;
+    overflow-x: hidden;
+    padding: 0;
+    margin: 0;
+}
+
+.landing-Container {
+    width: 100vw;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row; 
+    height:90vh;
+ }
+ .left-landing{
+    width:50%;
+ }
+ 
+ .left-landing img {
+     width: 100%;
+     height: 100vh; 
+ }
+ .right-landing{
+    width: 50%;
+     background-color: #7AB7B5;
+
+ }
+ .content-Landing{
+    height:70%;
+    margin:10%;
+   display: flex;
+   flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+ .content-Landing h1{
+    font-size: 50px;
+    color: #2D4649;
+    font-family: serif;
+ }
+ .styled-button {
+    background-color:#176b87;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 40px 2px;
+    cursor: pointer;
+    border-radius: 10px;
+    transition-duration: 0.4s;
+  }
+  span {
+   content: "\2192";
+ }
+  .styled-button:hover {
+    background-color: #020f17; 
+    color: white;
+  }
+  

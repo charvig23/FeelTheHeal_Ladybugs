@@ -1,0 +1,21 @@
+/* Footer.css */
+
+.footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    background-color: #333; /* Choose your desired background color */
+ /* Text color */
+    text-align: center;
+    padding: 10px 0; /* Adjust padding as needed */
+  }
+  
+  .footer .container {
+    max-width: 960px; /* Adjust max-width as needed */
+    margin: 0 auto; 
+  }
+  
+  .footer .text-footer{
+    font-size: 14px; 
+  }
+  

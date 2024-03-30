@@ -1,0 +1,40 @@
+@keyframes moveLeft {
+    0% {
+    transform: translateX(0%);
+    }
+    100% {
+    transform: translateX(-60%);
+    }
+    }
+    
+    .moving-text {
+    animation: moveLeft 8s linear infinite; 
+    font-family: 'Times New Roman', Times, serif;
+    color: rgb(50, 205, 205) !important;
+    }
+    .navbar .nav-link {
+        font-family: 'Times New Roman', Times, serif;
+        color: white;
+    }
+    
+    .navbar .nav-link:hover {
+        color: yellowgreen;
+    }
+    
+    .navbar .nav-link:active {
+        color: yellowgreen;
+    }
+    
+    .navbar .nav-link:visited {
+        color: white;
+    }
+    
+    
+    .navbar .nav-link:active {
+    background-color: rgb(96, 96, 87) !important;
+     }
+
+    .navbar{
+        background-color: #222;
+    }
+    

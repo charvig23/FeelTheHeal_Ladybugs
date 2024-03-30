@@ -1,0 +1,100 @@
+/* Style for the form container */
+.Form-Body{
+  max-height: 100%;
+  background-image: url(../../Assets/27.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  color:#000;
+  font-weight: 600;
+}
+.form-container {
+    max-width: 50rem;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff54;
+    border-radius: 8px;
+    
+  }
+  
+  /* Style for form headings */
+  .form-container h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+  
+  /* Style for form fields */
+  .form-container label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .form-container input[type="text"],
+  .form-container input[type="number"],
+  .form-container input[type="tel"],
+  .form-container input[type="date"],
+  .form-container input[type="email"],
+  .form-container select,
+  .form-container textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  .form-container select {
+    appearance: none; /* Remove default select arrow */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23000000' width='18px' height='18px'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 18px;
+    padding-right: 30px;
+  }
+  
+  .form-container textarea {
+    resize: vertical; /* Allow vertical resizing */
+  }
+  
+  .form-container button[type="submit"] {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .form-container button[type="submit"]:hover {
+    background-color: #45a049;
+  }
+  
+  /* Additional styles for small text below inputs */
+  .form-container small {
+    display: block;
+    margin-top: 5px;
+    color: #666;
+  }
+  
+  /* Style for horizontal line */
+  .form-container hr {
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: 20px 0;
+  }
+  
+  /* Optional: Style for required fields */
+  .form-container input:required,
+  .form-container select:required,
+  .form-container textarea:required {
+    border-color: #ff0000; /* Change border color for required fields */
+  }
+  
+  /* Optional: Style for error messages */
+  .form-container .error-message {
+    color: #ff0000;
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  
