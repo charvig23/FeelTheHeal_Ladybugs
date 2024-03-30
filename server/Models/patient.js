@@ -18,7 +18,7 @@ const Patient = new mongoose.Schema({
     },
     Appointments: {
         type: String,
-        required: true,
+        default: "",
     },
 });
 

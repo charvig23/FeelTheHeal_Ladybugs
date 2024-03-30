@@ -18,11 +18,11 @@ const Doc = new mongoose.Schema({
     },
     Occupation: {
         type: String,
-        required: true,
+        default: "",
     },
     Appointments: {
         type: String,
-        required: true,
+        default:"",
     },
 });
 
