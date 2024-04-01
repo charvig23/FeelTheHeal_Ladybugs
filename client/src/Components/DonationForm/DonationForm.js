@@ -19,7 +19,7 @@ function DonationForm() {
   const [dateOfDisaster, setDateOfDisaster] = useState('');
   const [additionalComments, setAdditionalComments] = useState('');
   const [otherDisaster, setOtherDisaster] = useState('');
-
+  
   const handleFileChange = (e) => {
     // Retrieve the selected file(s)
     const fileList = e.target.files;
