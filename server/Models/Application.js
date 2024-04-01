@@ -13,7 +13,8 @@ const donationAppSchema = new mongoose.Schema({
         },
         email: {
           type: String,
-          required: true
+          required: true,
+          unique:true,
         },
         phone: {
           type: String,
@@ -23,6 +24,10 @@ const donationAppSchema = new mongoose.Schema({
           type: String,
           required: true
         }
+    },
+    dateOfBirth: {
+      type: Date,
+      required: true,
     },
     detailsOfLoss: {
         type: String,
@@ -59,6 +64,18 @@ const donationAppSchema = new mongoose.Schema({
           type: String,
           required: true
         }
+    },
+    typeOfDisaster:{
+        type: String,
+        required: true,
+    },
+    dateOfDisaster:{
+        type: Date,
+        required: true,
+    },
+    checkBox:{
+        type: Boolean,
+        required: true,
     },
     status: {
         type: String,

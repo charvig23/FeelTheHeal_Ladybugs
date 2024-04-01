@@ -3,6 +3,7 @@ const app = express();
 const User = require("../server/Models/User.js");
 const Admin = require("../server/Models/admin.js");
 const passport=require("passport");
+const cors = require("cors");
 const JwtStrategy = require('passport-jwt').Strategy, 
   ExtractJwt = require('passport-jwt').ExtractJwt;
 if(process.env.NODE_ENV !== "production"){
@@ -13,14 +14,17 @@ if(process.env.NODE_ENV !== "production"){
 // using middlewares
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
+app.use(cors());
 
 // import routes here
 
 const authRoutes = require("./routes/auth.js");
+const applicationRoutes = require("./routes/application.js");
 
 //use routes here
 
 app.use("/auth", authRoutes);
+app.use("/api",applicationRoutes);
 
 module.exports = app;
 

@@ -87,8 +87,8 @@ class Header extends React.Component {
                     </Link>
                 </li>
                 <li className="nav-item">
-                <Link className="nav-link fs-5 px-4" to="/about">
-                      Collaborate
+                <Link className="nav-link fs-5 px-4" to="/login">
+                      <button onClick={this.handleLogout}>Logout</button>
                     </Link>
                 </li>
                 </>

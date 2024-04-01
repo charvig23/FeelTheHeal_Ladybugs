@@ -7,6 +7,7 @@ const User = new mongoose.Schema({
     email: {
         type: String,
         required: true,
+        unique: true,
     },
     password: {
         type: String,
@@ -25,7 +26,7 @@ const User = new mongoose.Schema({
         default: "",
     },
     AppliedDonations: {
-        type: mongoose.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref:"Application",
     },
     donate:{

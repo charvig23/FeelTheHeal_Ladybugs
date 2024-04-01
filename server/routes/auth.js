@@ -28,7 +28,7 @@ router.post("/register/user", async (req, res) => {
     const token = await getToken(email, newUser); 
     const userToReturn = {...newUser.toJSON(), token};
     delete userToReturn.password;
-    return res.status(200).json(userToReturn);
+    return res.status(200).json({userToReturn, msg: "User registered successfully"});
 });
 
 
@@ -51,7 +51,7 @@ router.post("/login/user", async (req, res) => {
         const token = await getToken(user.email, user);
         const userToReturn = {...user.toJSON(), token};
         delete userToReturn.password;
-        return res.status(200).json(userToReturn);
+        return res.status(200).json({userToReturn, msg: "Login successful"});
         console.log("successfully logged in :)");
     } catch(error){
         res.status(403).json({err:"Problem while logging in:("});
