@@ -16,9 +16,27 @@ const User = new mongoose.Schema({
         type: String,
         default: "Patient",
     },
+    profilePhoto:{
+        type: String,
+        default:"",//Default photo to be added once the integration is done
+    },
     Appointments: {
         type: String,
         default: "",
+    },
+    AppliedDonations: {
+        type: mongoose.Types.ObjectId,
+        ref:"Application",
+    },
+    donate:{
+        amountDonated:{
+            type:Number,
+            default: 0,
+        },
+        numOfDonations:{
+            type:Number,
+            default: 0,
+        }
     },
     //Applied and donated donations--> as objects
 });
