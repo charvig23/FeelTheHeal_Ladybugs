@@ -4,6 +4,8 @@ import { useNavigate, Link } from 'react-router-dom';
 import Header from '../Header/Header.js';
 import Footer from '../Footer/Footer.js';
 import axios from 'axios';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function Signup() {
   const [Name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -31,10 +33,10 @@ function Signup() {
           password: password,
       });
       if (response.data.msg === "User registered successfully") {
-          alert("User registered successfully");
+        toast.success("User registered successfully");
           navigate('/login'); 
       } else {
-          alert("Failed to register user: " + response.data.msg);
+        toast.error("Failed to register user: " + response.data.msg);
       }
   } catch (event) {
       setError(event.response.data.msg);

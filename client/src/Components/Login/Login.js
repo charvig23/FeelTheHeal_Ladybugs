@@ -3,6 +3,8 @@ import './Login.css';
 import Header from '../Header/Header.js';
 import Footer from '../Footer/Footer.js';
 import { useNavigate, Link } from 'react-router-dom';
+import {  toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 function Login() {
   const [email, setEmail] = useState('');
@@ -27,10 +29,10 @@ function Login() {
       })
       if (response.data.msg === "Login successful") {
           localStorage.setItem('isLoggedIn', 'true');
-          alert("Login successful");
+          toast.success("Login successful");
           navigate('/donation'); 
       } else {
-          alert("Failed to login user: " + response.data.msg);
+          toast.error("Failed to login: " + response.data.msg);
       }
   }
   catch (e) {
