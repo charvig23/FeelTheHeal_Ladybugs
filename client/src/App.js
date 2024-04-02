@@ -8,6 +8,7 @@ import Footer from './Components/Footer/Footer.js';
 import Donation from './Components/Donation/Donation.js';
 import DonationForm from './Components/DonationForm/DonationForm.js';
 import AppointmentPage from './Components/AppointmentPage/AppointmentPage.js';
+import Modules from './Components/Modules/Modules.js';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 

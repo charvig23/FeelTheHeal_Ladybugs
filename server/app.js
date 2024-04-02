@@ -20,11 +20,13 @@ app.use(cors());
 
 const authRoutes = require("./routes/auth.js");
 const applicationRoutes = require("./routes/application.js");
+const applyRoutes = require("./routes/applied.js");
 
 //use routes here
 
 app.use("/auth", authRoutes);
 app.use("/api",applicationRoutes);
+app.use("/apply", applyRoutes);
 
 module.exports = app;
 
