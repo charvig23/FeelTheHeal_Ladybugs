@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import './Login.css';
 import { useNavigate, Link } from 'react-router-dom';
-import Header from '../Header/Header.js';
-import Footer from '../Footer/Footer.js';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -39,13 +37,12 @@ function Signup() {
         toast.error("Failed to register user: " + response.data.msg);
       }
   } catch (event) {
-      setError(event.response.data.msg);
+      setError(event.response.data.error);
   }
   };
 
   return (
     <>
-    <Header/>
     <div className='body'>
     <div className='login-container'>
   <div className="login-form-container" style={{height: '56%'}}>
@@ -83,12 +80,12 @@ function Signup() {
           />
         </div>
         <button className='buttonLogin' type="submit" >Sign up</button>
+        {error && <p className="error-msg">{error}</p>}
         <div className='haventsign' ><h5>Don't have account? <Link to= '/Login'>login</Link></h5></div>
       </form>
     </div>
     </div>
     </div>
-    <Footer/>
     </>
   );
 }

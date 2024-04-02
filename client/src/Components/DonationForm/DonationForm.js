@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './DonationForm.css';
-import Header from '../Header/Header.js';
-import Footer from '../Footer/Footer.js';
+
 
 function DonationForm() {
   const [description, setDescription] = useState('');

@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import './Login.css';
-import Header from '../Header/Header.js';
-import Footer from '../Footer/Footer.js';
 import { useNavigate, Link } from 'react-router-dom';
 import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -42,7 +40,6 @@ function Login() {
 
   return (
     <>
-    <Header/>
     <div className='body'>
     <div className='login-container'>
     <div className="login-form-container">
@@ -71,12 +68,12 @@ function Login() {
           />
         </div>
         <button className='buttonLogin' type="submit">Login</button>
+        {error && <p className="error-msg">{error}</p>}
         <div className='haventsign' ><h5>Don't have account? <Link to='/Signup'> Sign up</Link></h5></div>
       </form>
     </div>
     </div>
     </div>
-    <Footer/>
     </>
   );
 }

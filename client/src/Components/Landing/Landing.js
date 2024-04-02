@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Landing.css';
 import { Link } from 'react-router-dom';
-import Header from '../Header/Header.js';
-import Footer from '../Footer/Footer.js';
 
 const Landing = () => {
     const [currentImage, setCurrentImage] = useState(0);
@@ -18,7 +16,6 @@ const Landing = () => {
 
     return (
         <>
-        <Header/>
         <div className='landing-Container'>
             <div className='left-landing'>
                 <img src={images[currentImage]} alt='' />
@@ -30,7 +27,6 @@ const Landing = () => {
                 </div>
             </div>
         </div>
-        <Footer/>
         </>
     );
 }

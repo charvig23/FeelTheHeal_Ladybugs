@@ -70,3 +70,8 @@
   .haventsign a:hover {
     text-decoration: underline; 
   }
+
+  .error-msg {
+    color: rgb(247, 22, 22);
+    text-align: center;
+  }
