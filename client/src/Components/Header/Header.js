@@ -77,7 +77,7 @@ class Header extends React.Component {
                     </Link>
                 </li>
                 <li className="nav-item dropdown">
-                <Link className="nav-link fs-5 px-4" to="/insights">
+                <Link className="nav-link fs-5 px-4" to="/AppointmentPage">
                       Appointment
                     </Link>
                 </li>
@@ -87,8 +87,8 @@ class Header extends React.Component {
                     </Link>
                 </li>
                 <li className="nav-item">
-                <Link className="nav-link fs-5 px-4" to="/about">
-                      Collaborate
+                <Link className="nav-link fs-5 px-4" to="/Modules">
+                      Resources
                     </Link>
                 </li>
                 </>

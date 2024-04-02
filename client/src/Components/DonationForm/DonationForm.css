@@ -1,5 +1,6 @@
 /* Style for the form container */
 .Form-Body{
+  position: relative;
   max-height: 100%;
   background-image: url(../../Assets/27.jpg);
   background-repeat: no-repeat;
@@ -7,20 +8,26 @@
   background-position: center;
   color:#000;
   font-weight: 600;
+  padding: 0;
+  margin:0;
 }
 .form-container {
+  position: relative;
     max-width: 50rem;
     margin: 0 auto;
     padding: 20px;
     background-color: #ffffff54;
     border-radius: 8px;
-    
+    top:0.4rem;
+   
   }
   
   /* Style for form headings */
   .form-container h2 {
     margin-top: 0;
     margin-bottom: 20px;
+    font-family: serif;
+    text-align: center;
   }
   
   /* Style for form fields */
@@ -88,13 +95,23 @@
   .form-container input:required,
   .form-container select:required,
   .form-container textarea:required {
-    border-color: #ff0000; /* Change border color for required fields */
+    border-color: #00e1ff; /* Change border color for required fields */
   }
   
   /* Optional: Style for error messages */
   .form-container .error-message {
-    color: #ff0000;
+    color: #00d0ff;
     font-size: 14px;
     margin-top: 5px;
   }
+  
+  .consent-container input[type="checkbox"] {
+    margin-right: 10px; 
+  }
+  .consent-container {
+    display: flex; /* Use flexbox */
+    align-items: center; /* Align items vertically */
+  }
+  
+
   

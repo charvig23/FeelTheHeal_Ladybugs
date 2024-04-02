@@ -11,6 +11,30 @@
     
   }
   
+  
+  .listing-item:hover {
+    transform: scale(1.05); /* Scale up when hovered */
+  }
+  
+  @keyframes fade-in {
+    from {
+      opacity: 0; /* Start with opacity 0 */
+      transform: translateY(-5px); /* Start slightly above */
+    }
+    to {
+      opacity: 1; /* End with full opacity */
+      transform: translateY(0); /* End at original position */
+    }
+  }
+  
+  .fade-enter {
+    animation: fade-in 0.3s ease forwards; /* Apply fade-in animation */
+  }
+  
+  .fade-exit {
+    opacity: 1; /* Ensure element is fully opaque */
+  }
+  
   .listing-item {
     display: flex;
     background-color: #ffffff;
@@ -28,6 +52,7 @@
     margin: 50px;
     font-family: serif  ;
     font-weight: bold;
+    color: rgb(6, 6, 6);
 }
   
   .listing-item:first-child {
@@ -84,12 +109,14 @@
   .img-container {
     width: 100vw;
     position: relative;
-    background-image: url(../../Assets/27.png);
+    background-image: url(../../Assets/67.png);
     height: 10rem;
     display: flex;
     flex-direction: column;
     align-items: center; 
-    background-position: center;
+    background-size: cover; 
+  background-repeat: no-repeat;
+  background-position: 7%;
   }
   
   

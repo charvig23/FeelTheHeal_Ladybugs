@@ -19,6 +19,11 @@ function DonationForm() {
   const [dateOfDisaster, setDateOfDisaster] = useState('');
   const [additionalComments, setAdditionalComments] = useState('');
   const [otherDisaster, setOtherDisaster] = useState('');
+  const [bankDetails, setBankDetails] = useState({
+    bankName: '',
+    accountNumber: '',
+    accountHolderName: ''
+  });
 
   const handleFileChange = (e) => {
     // Retrieve the selected file(s)
@@ -41,10 +46,18 @@ function DonationForm() {
     const value = e.target.value.replace(/\D/g, ''); 
     setCompensationAmount(value);
   };
+  const handleBankDetailsChange = (e) => {
+    const { name, value } = e.target;
+    setBankDetails(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
+
 
   return (
     <>
-    <Header/>
+   
     <div className='Form-Body'>
     <div className='form-container'>
       <h2>Apply for Donation</h2>
@@ -191,6 +204,39 @@ function DonationForm() {
         </div>
       
         <div>
+            <label htmlFor="bankName">Bank Name:</label>
+            <input
+              type="text"
+              id="bankName"
+              name="bankName"
+              value={bankDetails.bankName}
+              onChange={handleBankDetailsChange}
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="accountNumber">Account Number:</label>
+            <input
+              type="text"
+              id="accountNumber"
+              name="accountNumber"
+              value={bankDetails.accountNumber}
+              onChange={handleBankDetailsChange}
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="accountHolderName">Account Holder Name:</label>
+            <input
+              type="text"
+              id="accountHolderName"
+              name="accountHolderName"
+              value={bankDetails.accountHolderName}
+              onChange={handleBankDetailsChange}
+              required
+            />
+          </div>
+        <div>
           <label htmlFor="additionalComments">Additional Comments:</label>
           <textarea
             id="additionalComments"
@@ -198,22 +244,23 @@ function DonationForm() {
             onChange={(e) => setAdditionalComments(e.target.value)}
           />
         </div>
-        <div>
-          <input
-            type="checkbox"
-            id="consent"
-            checked={consent}
-            onChange={(e) => setConsent(e.target.checked)}
-          />
-          <label htmlFor="consent">
-            I consent to publicly share photos related to my loss.
-          </label>
-        </div>
+        <div className="consent-container">
+  <input
+    type="checkbox"
+    id="consent"
+    checked={consent}
+    onChange={(e) => setConsent(e.target.checked)}
+  />
+  <label htmlFor="consent">
+    I consent to publicly share photos related to my loss.
+  </label>
+</div>
+
         <button type="submit">Submit Application</button>
       </form>
     </div>
     </div>
-    <Footer/>
+    
     </>
   );
 }

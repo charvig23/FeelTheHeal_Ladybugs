@@ -1,0 +1,46 @@
+
+  .Modules-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin:4rem;
+    grid-gap: 3rem;
+  }
+  .Modules h1{
+    text-align: center;
+    padding-top:1rem;
+    color: rgb(16, 153, 123);
+    font-family: serif;
+    font-weight: 600;
+  }
+   
+  .ModuleCard {
+    background-color: #d1c9c9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .ModuleCard h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  
+  .ModuleCard p {
+    margin-bottom: 15px;
+  }
+  
+  .video-container {
+    position: relative;
+    overflow: hidden;
+    padding-top: 56.25%; /* 16:9 aspect ratio (height: 9/16 = 0.5625) */
+  }
+  
+  .video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+  
