@@ -2,10 +2,15 @@ import React, { useState } from 'react';
 import './Login.css';
 import Header from '../Header/Header.js';
 import Footer from '../Footer/Footer.js';
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+import {  toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import axios from 'axios';
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -15,14 +20,24 @@ function Login() {
     setPassword(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // Here you can add your login logic
-    console.log('Email:', email);
-    console.log('Password:', password);
-    // Clear input fields after submission
-    setEmail('');
-    setPassword('');
+    try {
+      const response = await axios.post("http://localhost:4000/auth/login/user", {
+          email: email, 
+          password: password,
+      })
+      if (response.data.msg === "Login successful") {
+          localStorage.setItem('isLoggedIn', 'true');
+          toast.success("Login successful");
+          navigate('/donation'); 
+      } else {
+          toast.error("Failed to login: " + response.data.msg);
+      }
+  }
+  catch (e) {
+      setError(e.response.data.msg);
+  }
   };
 
   return (

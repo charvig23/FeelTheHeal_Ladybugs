@@ -1,12 +1,18 @@
 import React, { useState } from 'react';
 import './Login.css';
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import Header from '../Header/Header.js';
 import Footer from '../Footer/Footer.js';
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function Signup() {
-  const [name, setName] = useState('');
+  const [Name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
+
   const handleNameChange = (event) => {
     setName(event.target.value);
   };
@@ -18,15 +24,23 @@ function Signup() {
     setPassword(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log('Name:', name);
-    console.log('Email:', email);
-    console.log('Password:', password);
-    // Clear input fields after submission
-    setName('');
-    setEmail('');
-    setPassword('');
+    try {
+      const response = await axios.post("http://localhost:4000/auth/register/user", {
+          Name: Name,
+          email: email,
+          password: password,
+      });
+      if (response.data.msg === "User registered successfully") {
+        toast.success("User registered successfully");
+          navigate('/login'); 
+      } else {
+        toast.error("Failed to register user: " + response.data.msg);
+      }
+  } catch (event) {
+      setError(event.response.data.msg);
+  }
   };
 
   return (
@@ -43,7 +57,7 @@ function Signup() {
               type="text"
               id="name"
               placeholder="Enter Name"
-              value={name}
+              value={Name}
               onChange={handleNameChange}
               required
             />
@@ -68,7 +82,7 @@ function Signup() {
             required
           />
         </div>
-        <button className='buttonLogin' type="submit">Sign up</button>
+        <button className='buttonLogin' type="submit" >Sign up</button>
         <div className='haventsign' ><h5>Don't have account? <Link to= '/Login'>login</Link></h5></div>
       </form>
     </div>
