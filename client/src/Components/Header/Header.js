@@ -68,8 +68,8 @@ class Header extends React.Component {
                     </Link>
                 </li> */}
                 <li className="nav-item">
-                <Link className="nav-link fs-5 px-4" to="/Leaderboard">
-                      Home                    </Link>
+                <Link className="nav-link fs-5 px-4" to="/Modules">
+                      Resources                    </Link>
                 </li>
                 <li className="nav-item">
                 <Link className="nav-link fs-5 px-4" to="/Donation">
