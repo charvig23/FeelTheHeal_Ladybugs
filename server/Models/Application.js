@@ -6,24 +6,22 @@ const donationAppSchema = new mongoose.Schema({
         ref: "User",
         required: true,
     },
-    contactDetails: {
-        name: {
-          type: String,
-          required: true
-        },
-        email: {
-          type: String,
-          required: true,
-          unique:true,
-        },
-        phone: {
-          type: String,
-          required: true
-        },
-        address: {
-          type: String,
-          required: true
-        }
+    name: {
+      type: String,
+      required: true
+    },
+    email: {
+      type: String,
+      required: true,
+      unique:true,
+    },
+    phone: {
+      type: String,
+      required: true
+    },
+    address: {
+      type: String,
+      required: true
     },
     dateOfBirth: {
       type: Date,
@@ -51,19 +49,17 @@ const donationAppSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    bankDetails: {
-        bankName: {
-          type: String,
-          required: true
-        },
-        accountNumber: {
-          type: String,
-          required: true
-        },
-        accountHolderName: {
-          type: String,
-          required: true
-        }
+    bankName: {
+      type: String,
+      required: true
+    },
+    accountNumber: {
+      type: String,
+      required: true
+    },
+    accountHolderName: {
+      type: String,
+      required: true
     },
     typeOfDisaster:{
         type: String,
