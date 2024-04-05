@@ -34,7 +34,7 @@ const donationAppSchema = new mongoose.Schema({
         required: true
     },
     proofs: [{
-        publicId: {
+        public_id: {
             type: String,
             required: true,
         },

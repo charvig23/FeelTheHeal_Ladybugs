@@ -1,12 +1,45 @@
 const Application = require('../Models/Application');
-
-exports.submitApplication = async(req,res)=>{
+const cloudinary = require('cloudinary');
+const dataUri = require('../utils/dataUri');
+const Admin = require("../Models/admin");
+const submitApplication = async(req,res,next)=>{
     try{
-        const application = await Application.create(req.body);
+        // console.log(req.body);
+        const userId = req.user._id;
+        const file = req.file;
+        // console.log(file);
+        const dataUriFile = dataUri(file);
+        const result = await cloudinary.v2.uploader.upload(dataUriFile.content);
+        const newApplication = await Application.create({
+            user: userId,
+            contactDetails: req.body.contactDetails,
+            dateOfBirth: req.body.dateOfBirth,
+            detailsOfLoss: req.body.detailsOfLoss,
+            location: req.body.location,
+            compensationAmount: req.body.compensationAmount,
+            bankDetails: req.body.bankDetails,
+            typeOfDisaster: req.body.typeOfDisaster,
+            dateOfDisaster: req.body.dateOfDisaster,
+            checkBox: req.body.checkBox,
+            proofs: {
+                public_id: result.public_id,
+                url: result.secure_url,
+                // public_id: "1234",
+                // url:"xyz",
+            },
+            status: 'pending',
+            createdAt: new Date(),
+      });
+      const admin = await Admin.findOne({ email: 'jiya@gmail.com' });
+        if (!admin) {
+        return res.status(404).json({ error: 'Admin not found' });
+        }
+        admin.DonApplications.push(newApplication._id);
+        await admin.save();
         res.status(201).json({
             success:true,
             message: "Application submitted successfully",
-            data: application,
+            data: newApplication,
         });
     }
     catch(error){
@@ -20,82 +53,63 @@ exports.submitApplication = async(req,res)=>{
 
 // <--GET APPLICATIONS--> --Admin
 
-exports.getApplication = async(req,res)=>{
-    try{
-        const application = await Application.find();
+const getApplication = async (req, res) => {
+    try {
+        const applications = await Application.find();
         res.status(200).json({
-            success:true,
-            message: "Application fetched successfully",
-            data: application,
+            success: true,
+            message: "Applications fetched successfully",
+            data: applications,
         });
-    }
-    catch(error){
+    } catch (error) {
         res.status(400).json({
-            success:false,
-            message: "Application could not be fetched",
+            success: false,
+            message: "Applications could not be fetched",
             error: error.message,
         });
     }
-}
-
-
-// <--DELETE APPLICATION--> --Admin
-exports.deleteApplication = async(req,res,next)=>{
-    try{
-        const application = await Application.findById(req.params.id);
-        if(!application){
-            return res.status(404).json({
-                success:false,
-                message: "Application not found",
-            });
-        }
-        await application.remove();
-        res.status(200).json({
-            success:true,
-            message: "Application deleted successfully",
-        });
-    }
-    catch(error){
-        res.status(400).json({
-            success:false,
-            message: "Application could not be deleted",
-            error: error.message,
-        });
-    }
-}
+};
 
 // <--UPDATE APPLICATION--> --Admin
 // admin is allowed only to update the status of the application
-exports.updateApplication = async(req,res,next)=>{
-    try{
+const updateApplication = async (req, res, next) => {
+    try {
         const allowedFieldsToUpdate = { status: req.body.status };
         let application = await Application.findById(req.params.id);
-        if(!application){
+        if (!application) {
             return res.status(404).json({
-                success:false,
-                message: "Application not found",
+                success: false,
+                message: 'Application not found',
             });
         }
+
         application = await Application.findByIdAndUpdate(
             req.params.id,
-            allowedFieldsToUpdate, 
+            allowedFieldsToUpdate,
             {
                 new: true,
                 runValidators: true,
                 useFindAndModify: false
             }
         );
+        if (req.body.status === 'approved') {
+            application.deadline = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000);
+        }
+
+        await application.save();
+
         res.status(200).json({
-            success:true,
-            message: "Application updated successfully",
+            success: true,
+            message: 'Application updated successfully',
             data: application,
         });
-    }
-    catch(error){
+    } catch (error) {
         res.status(400).json({
-            success:false,
-            message: "Application could not be updated",
+            success: false,
+            message: 'Application could not be updated',
             error: error.message,
         });
     }
-}
+};
+
+module.exports = {submitApplication,getApplication,updateApplication};
