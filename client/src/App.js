@@ -13,7 +13,6 @@ import DonationDashboard from './Components/Dashboard/DonationDashboard.js';
 import Dashboard from './Components/Dashboard/Dashboard.js';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
 function App() {
   return (
     <div><ToastContainer position="top-center" autoClose={3000} hideProgressBar />
@@ -29,8 +28,6 @@ function App() {
         <Route path="/Donation" element={<Donation />} />
         <Route path='/Home' element={<Home/>}/>
         <Route path="/DonationForm" element={<DonationForm/>} />
-        <Route path="/AppointmentPage" element={<AppointmentPage/>} />
-        <Route path="/Modules" element={<Modules />} />
         <Route path="/AppointmentPage" element={<AppointmentPage/>} />
       </Routes>
     

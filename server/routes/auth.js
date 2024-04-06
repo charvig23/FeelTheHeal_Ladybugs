@@ -3,7 +3,7 @@ const router=express.Router();
 const User = require("../Models/User");
 const Admin = require("../Models/admin");
 const bcrypt=require("bcrypt");
-const {getToken}=require("../utils/helper");
+const getToken=require("../utils/helper");
 
 // <--PATIENTS LOG IN SIGNUP ROUTES-->
 
@@ -75,7 +75,7 @@ router.post("/register/admin", async (req, res) => {
 
 
     const hashedPwd= await bcrypt.hash(password, 10); 
-    const newUserData = {email, password: hashedPwd, firstName, lastName};
+    const newUserData = {email, password: hashedPwd, Name};
     const newUser = await Admin.create(newUserData);
 
    

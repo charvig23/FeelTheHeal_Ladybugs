@@ -1,9 +1,7 @@
 const jwt = require("jsonwebtoken");
 
-exports = {}
-
-exports.getToken = async (email, user) => {
+const getToken = async (email, user,next) => {
     const token = jwt.sign({ identifier : user._id}, process.env.pass_word);
     return token;
 };
-module.exports = exports
+module.exports = getToken;

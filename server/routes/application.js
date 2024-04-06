@@ -1,10 +1,14 @@
 const express = require("express");
-const { submitApplication } = require("../controller/application");
+const applicationController = require("../controller/application.js");
+const singleUpload = require("../middlewares/multer.js");
+const authMiddleware = require("../middlewares/authMiddleware.js");
+const adminAuthMiddleware = require("../middlewares/adminAuthMiddleware.js");
 const router = express.Router();
 
-router.route("/submit-application").post(submitApplication);
-// router.route("/get-application").get(getApplication);
-// router.route("/application/:id").delete(deleteApplication).put(updateApplication);
+
+router.post('/submit/application',authMiddleware, singleUpload,  applicationController.submitApplication);
+router.route("/get-application").get(adminAuthMiddleware, applicationController.getApplication);
+router.route("/application/:id").put(adminAuthMiddleware, applicationController.updateApplication);
 
 
 module.exports = router;
