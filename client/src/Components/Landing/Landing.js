@@ -2,23 +2,13 @@ import React, { useState, useEffect } from 'react';
 import './Landing.css';
 import { Link } from 'react-router-dom';
 
-const Landing = () => {
-    const [currentImage, setCurrentImage] = useState(0);
-    const images = ['16.jpg', '9.avif']; 
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setCurrentImage((prevIndex) => (prevIndex + 1) % 2);
-        }, 3000); 
-
-        return () => clearInterval(interval);
-    }, []); 
-
+function Landing() {
     return (
         <>
         <div className='landing-Container'>
             <div className='left-landing'>
-                <img src={images[currentImage]} alt='' />
+                <img src={'9.avif'} alt='' />
             </div>
             <div className="right-landing">
                 <div className='content-Landing'>
@@ -29,7 +19,7 @@ const Landing = () => {
         </div>
         </>
     );
-}
+    }
 
 function App() {
     return (

@@ -1,0 +1,20 @@
+
+.Dashboard-body {
+    height: 100vh;
+  }
+  
+  .dashboard-container {
+    display: flex;
+    height: 100%;
+  }
+  
+  .content {
+    flex-grow: 1;
+  }
+  
+  /* Additional styling for the sidebar, adjust as needed */
+  .Sidebar {
+    width: 250px; /* Adjust the width as needed */
+    background-color: #f0f0f0; /* Example background color */
+  }
+  

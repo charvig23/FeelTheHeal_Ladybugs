@@ -1,0 +1,26 @@
+/* Define custom styles for the stacks */
+.stack-container {
+    margin: 50px; /* Add margin at the bottom of each stack */
+  }
+  
+  .stack-item {
+    border: 1px solid #ccc; /* Add border to each stack */
+    border-radius: 5px; /* Add border radius for rounded corners */
+    padding: 10px; /* Add padding */
+    margin-bottom: 5px;
+  }
+  
+  .stack-description {
+    flex: 1; /* Take remaining space */
+  }
+  
+  .stack-button {
+    margin-right: 10px; /* Add right margin to the button */
+  }
+  
+  .stack-dropdown {
+    margin-right: 10px; /* Add right margin to the dropdown */
+  }
+  .Dona-page{
+    height:100vh;
+  }

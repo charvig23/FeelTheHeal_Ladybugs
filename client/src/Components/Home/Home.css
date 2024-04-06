@@ -1,0 +1,38 @@
+.Card-container{
+display: flex;
+gap: 30px;
+justify-content: center;
+align-items: center;
+margin-top: -50px;
+}
+.Home-card{
+position: relative;
+
+}
+.About-us{
+display: flex;
+margin-top: 3rem;
+height: 15rem;
+margin-bottom: 3rem;
+}
+.About-us-para{
+    width:50%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4rem;
+}
+.About-us-img{
+    width:50%;
+    padding:0 5rem;
+}
+.About-img{
+    height:100%;
+    width:100%;
+   
+}
+.About-us-heading{
+    text-align: center;
+    margin-top: 3rem;
+}
