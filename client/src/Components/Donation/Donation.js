@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Donation.css';
+import Header from '../Header/Header.js';
 
 // Sample data for listings
 const listingsData = [
@@ -70,6 +71,7 @@ const Donation = () => {
 
   return (
     <>
+    <Header/>
         <div className="listings-container">
         <div className='img-container'>
             <h1 className='donation-heading'>Donate to people in need</h1>

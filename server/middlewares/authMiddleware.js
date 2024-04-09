@@ -1,11 +1,19 @@
 // authMiddleware.js
 const passport = require('passport');
 const JwtStrategy = require('passport-jwt').Strategy;
-const ExtractJwt = require('passport-jwt').ExtractJwt;
-const User = require('../Models/User'); 
+// const cookieExtractor = require('passport-jwt').ExtractJwt.fromCookie;
+const User = require('../Models/User.js'); 
+
+const cookieExtractor = (req) => {
+    let token = null;
+    if (req && req.cookies) {
+        token = req.cookies['token'];
+    }
+    return token;
+};
 
 const opts = {};
-opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
+opts.jwtFromRequest = cookieExtractor; 
 opts.secretOrKey = process.env.pass_word; 
 
 passport.use(
@@ -25,3 +33,4 @@ passport.use(
 
 const authMiddleware = passport.authenticate('jwt', { session: false });
 module.exports = authMiddleware;
+

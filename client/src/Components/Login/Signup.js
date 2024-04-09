@@ -4,6 +4,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Header from '../Header/Header.js';
 function Signup() {
   const [Name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -43,6 +44,7 @@ function Signup() {
 
   return (
     <>
+    <Header/>
     <div className='body'>
     <div className='login-container'>
   <div className="login-form-container" style={{height: '56%'}}>

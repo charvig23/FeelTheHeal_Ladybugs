@@ -1,14 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
 import './Login.css';
 import { useNavigate, Link } from 'react-router-dom';
 import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Header from '../Header/Header.js';
 import axios from 'axios';
+import { useCookies } from 'react-cookie';
+
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
+  const [cookies, setCookie] = useCookies(['token']);
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -21,25 +25,40 @@ function Login() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post("http://localhost:4000/auth/login/user", {
-          email: email, 
-          password: password,
-      })
+      const response = await axios.post("http://localhost:4000/auth/login", {
+        email: email,
+        password: password,
+      }, {
+        withCredentials: true 
+      });
+  
+      setCookie('token', response.data.token);
+      localStorage.setItem('isLoggedIn', 'true');
+      localStorage.setItem('userRole', response.data.role);
+      console.log(response.data.role);
+  
       if (response.data.msg === "Login successful") {
-          localStorage.setItem('isLoggedIn', 'true');
-          toast.success("Login successful");
-          navigate('/donation'); 
+        if (response.data.role === "admin") {
+          toast.success("Admin login successful");
+          navigate('/Dashboard');
+        } else {
+          toast.success("User login successful");
+          navigate('/donation');
+        }
       } else {
-          toast.error("Failed to login: " + response.data.msg);
+        toast.error("Failed to login: " + response.data.msg);
       }
-  }
-  catch (e) {
-      setError(e.response.data.msg);
-  }
+    } catch (error) {
+      setError(error.response.data.msg);
+    }
   };
+  
+  
+  
 
   return (
     <>
+    <Header/>
     <div className='body'>
     <div className='login-container'>
     <div className="login-form-container">

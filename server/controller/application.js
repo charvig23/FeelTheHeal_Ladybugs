@@ -2,12 +2,12 @@ const Application = require('../Models/Application');
 const cloudinary = require('cloudinary');
 const dataUri = require('../utils/dataUri');
 const Admin = require("../Models/admin");
-const submitApplication = async(req,res,next)=>{
+const submitApplication = async(req,res)=>{
     try{
-        // console.log(req.body);
+        console.log(req.body);
         const userId = req.user._id;
         const file = req.file;
-        // console.log(file);
+        console.log(file);
         const dataUriFile = dataUri(file);
         const result = await cloudinary.v2.uploader.upload(dataUriFile.content);
         const newApplication = await Application.create({
@@ -112,4 +112,29 @@ const updateApplication = async (req, res, next) => {
     }
 };
 
-module.exports = {submitApplication,getApplication,updateApplication};
+const getApplicationById =  async (req, res) => {
+    try {
+      const applicationId = req.params.id;
+      const application = await Application.findById(applicationId);
+  
+      if (!application) {
+        return res.status(404).json({
+          success: false,
+          message: 'Application not found',
+        });
+      }
+      res.status(200).json({
+        success: true,
+        message: 'Application details fetched successfully',
+        data: application,
+      });
+    } catch (error) {
+      res.status(500).json({
+        success: false,
+        message: 'Internal server error',
+        error: error.message,
+      });
+    }
+  };
+
+module.exports = {submitApplication,getApplication,updateApplication,getApplicationById};

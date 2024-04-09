@@ -1,7 +1,7 @@
 import React from 'react';
 import './Header.css';
 import { Link } from 'react-router-dom';
-
+import axios from 'axios';
 class Header extends React.Component {
   constructor(props) {
     super(props);
@@ -17,7 +17,8 @@ class Header extends React.Component {
     }
   }
 
-  handleLogout = () => {
+  handleLogout = async () => {
+    const logout = await axios.get("http://localhost:4000/auth/logout",{withCredentials:true});
     localStorage.clear();
     this.setState({ isLoggedIn: false });
   };

@@ -1,40 +1,58 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Stack from './Stack.js';
 import { Pagination } from 'react-bootstrap';
 import './DonationDashboard.css'; // Import the CSS file
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 function DonationDashboard() {
-  const stacksPerPage = 7; // Number of stacks per page
-  const [currentPage, setCurrentPage] = useState(1); // State to track the current page
+  const stacksPerPage = 7; 
+  const navigate = useNavigate();
+  const [currentPage, setCurrentPage] = useState(1); 
+  const [applicationData, setApplicationData] = useState([]); 
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null); 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('http://localhost:4000/api/get-application',{withCredentials: true});
+         console.log(response.data);
+         console.log(response.status);
+        // if (!response.ok) {
+        //   throw new Error('Failed to fetch data');
+        // }
+        const data = await response.data;
+        console.log(data);
+        setApplicationData(data.data);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        setError(error.message);
+        setLoading(false);
+      }
+    };
 
-  const stacks = [
-    { id: 1, description: 'Description 1', buttonText: 'View Details', dropdownOptions: ['Approve', 'Reject'] },
-    { id: 2, description: 'Description 2', buttonText: 'View Details', dropdownOptions: ['Approve', 'Reject'] },
-    { id: 3, description: 'Description 3', buttonText: 'View Details', dropdownOptions: ['Approve', 'Reject'] },
-    { id: 4, description: 'Description 4', buttonText: 'View Details', dropdownOptions: ['Approve', 'Reject'] },
-    { id: 5, description: 'Description 1', buttonText: 'View Details', dropdownOptions: ['Approve', 'Reject'] },
-    { id: 6, description: 'Description 2', buttonText: 'View Details', dropdownOptions: ['Approve', 'Reject'] },
-    { id: 7, description: 'Description 3', buttonText: 'View Details', dropdownOptions: ['Approve', 'Reject'] },
-    { id: 8, description: 'Description 4', buttonText: 'View Details', dropdownOptions: ['Approve', 'Reject'] },
-    { id: 9, description: 'Description 1', buttonText: 'View Details', dropdownOptions: ['Approve', 'Reject'] },
-    { id: 10, description: 'Description 2', buttonText: 'View Details', dropdownOptions: ['Approve', 'Reject'] },
-    { id: 11, description: 'Description 3', buttonText: 'View Details', dropdownOptions: ['Approve', 'Reject'] },
-    { id: 12, description: 'Description 4', buttonText: 'View Details', dropdownOptions: ['Approve', 'Reject'] },
-  ];
+    fetchData();
+  }, []);
 
   // Calculate the indexes of stacks to be displayed on the current page
   const indexOfLastStack = currentPage * stacksPerPage;
   const indexOfFirstStack = indexOfLastStack - stacksPerPage;
-  const currentStacks = stacks.slice(indexOfFirstStack, indexOfLastStack);
+  const currentStacks = applicationData.slice(indexOfFirstStack, indexOfLastStack);
 
   // Change page
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
+  const handleViewDetailsClick = (_id) => {
+    navigate(`/application/${_id}`); 
+  };
+  
 
   // Pagination items
   const paginationItems = [];
-  for (let number = 1; number <= Math.ceil(stacks.length / stacksPerPage); number++) {
+  for (let number = 1; number <= Math.ceil(applicationData.length / stacksPerPage); number++) {
     paginationItems.push(
       <Pagination.Item key={number} active={number === currentPage} onClick={() => handlePageChange(number)}>
         {number}
@@ -47,10 +65,26 @@ function DonationDashboard() {
       <div className='Dona-page'>
         <div><h1>DonationDashboard</h1></div>
         <div className="stack-container">
-          {/* Map over the array of stack data for the current page */}
-          {currentStacks.map(stack => (
-            <Stack key={stack.id} {...stack} />
-          ))}
+          {/* Display loading message while fetching data */}
+          {loading ? (
+            <div>Loading...</div>
+          ) : (
+            currentStacks.map(stack => (
+              <Stack
+                key={stack._id}
+                _id={stack._id}
+                imageUrl={stack.proofs[0].url}
+                name={stack.contactDetails.name}
+                location={stack.location}
+                disasterType={stack.typeOfDisaster}
+                createdAt={stack.createdAt}
+                buttonText='View Details' onClick={() => handleViewDetailsClick(stack._id)}
+                dropdownOptions={['Approve', 'Reject']}
+                handleViewDetails={() => {}}
+                handleUpdateStatus={() => {}}
+              />
+            ))
+          )}
 
           {/* Pagination */}
           <div className="pagination-container">
@@ -63,4 +97,3 @@ function DonationDashboard() {
 }
 
 export default DonationDashboard;
-
