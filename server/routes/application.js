@@ -6,9 +6,8 @@ const adminAuthMiddleware = require("../middlewares/adminAuthMiddleware.js");
 const router = express.Router();
 
 
-router.post('/submit/application',authMiddleware, singleUpload,  applicationController.submitApplication);
+router.route('/submit/application').post(authMiddleware, singleUpload,  applicationController.submitApplication);
 router.route("/get-application").get(adminAuthMiddleware, applicationController.getApplication);
-router.route("/application/:id").put(adminAuthMiddleware, applicationController.updateApplication);
-
+router.route("/application/:id").put(adminAuthMiddleware, applicationController.updateApplication).get(adminAuthMiddleware, applicationController.getApplicationById);
 
 module.exports = router;

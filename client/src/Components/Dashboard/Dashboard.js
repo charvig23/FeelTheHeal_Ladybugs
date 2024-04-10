@@ -1,17 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from '../Header/Header.js';
-import Footer from '../Footer/Footer.js'
+import Footer from '../Footer/Footer.js';
+import { useNavigate } from 'react-router-dom';
 import Sidebar from './Sidebar.js'; 
 import { FiX } from 'react-icons/fi'; 
 import { FaAngleRight } from 'react-icons/fa'; 
 import './Dashboard.css';
+import {jwtDecode} from 'jwt-decode';
+import { useCookies } from 'react-cookie';
 
 const Dashboard = () => {
     const [collapsed, setCollapsed] = useState(false); // State to handle sidebar collapse
-
+    
+    const navigate = useNavigate();
+    // const userRole = localStorage.getItem('userRole');
     const handleToggleSidebar = () => {
         setCollapsed(!collapsed);
     };
+    const [cookies] = useCookies(['token']);
+
+    useEffect(() => {
+        const token = cookies.token || cookies.jwt;
+        if (token) {
+            const decodedToken = jwtDecode(token);
+            if (decodedToken.role !== 'admin') {
+                navigate('/login'); 
+            }
+        } else {
+            navigate('/dashboard'); 
+        }
+    }, [cookies.token, navigate]);
 
     return (
         <>

@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './Landing.css';
 import { Link } from 'react-router-dom';
-
+import Header from '../Header/Header.js';
 
 function Landing() {
     return (
         <>
+        <Header />
         <div className='landing-Container'>
             <div className='left-landing'>
                 <img src={'9.avif'} alt='' />
