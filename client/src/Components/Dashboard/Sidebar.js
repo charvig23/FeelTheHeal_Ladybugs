@@ -4,6 +4,7 @@ import { Sidebar as ProSidebar, Menu, MenuItem, SubMenu } from "react-pro-sideba
 import { FiUser, FiList, FiCalendar , FiGift, FiUsers,} from "react-icons/fi"; // Changed FiSettings to FiList for Applications
 import { FaCog } from "react-icons/fa"; 
 
+
 const Sidebar = ({ collapsed }) => {
   return (
     <ProSidebar collapsed={collapsed}>
