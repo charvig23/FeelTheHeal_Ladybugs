@@ -3,7 +3,7 @@ import { Card } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoneyBill } from '@fortawesome/free-solid-svg-icons';
 import './Home.css';
-
+import Header from '../Header/Header.js';
 function Home() {
     const [activeIndex, setActiveIndex] = useState(0);
 
@@ -70,6 +70,8 @@ function Home() {
     }, [activeIndex]);
 
     return (
+        <div>
+        <Header/>
         <div className='homepage-container'>
         <div className='homepage-content'>
             {/* Carousel */}
@@ -137,6 +139,7 @@ function Home() {
                      f description of the image for accessibility purposes. Also, ensure that you have the necessary setup 
                      to render this component within your React application.
                 </p>
+            </div>
             </div>
             </div>
             </div>

@@ -63,11 +63,11 @@ class Header extends React.Component {
                 {/* Menu Items */}
                 {this.state.isLoggedIn ? (
                   <>
-                {/* <li className="nav-item">
+                <li className="nav-item">
                 <Link className="nav-link fs-5 px-4" to="/home">
                       Home
                     </Link>
-                </li> */}
+                </li>
                 <li className="nav-item">
                 <Link className="nav-link fs-5 px-4" to="/Dashboard">
                       Dashboard                   </Link>
