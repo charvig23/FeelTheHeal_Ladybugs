@@ -12,6 +12,7 @@ import DoctorDashboard from './Components/Dashboard/DoctorDashboard.js';
 import DonationDashboard from './Components/Dashboard/DonationDashboard.js';
 import ApplicationDetails from './Components/Dashboard/ApplicationDetails.js';
 import Dashboard from './Components/Dashboard/Dashboard.js';
+import UserDashboard from './Components/UserDashboard/UserDashboard.js';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 function App() {
@@ -24,6 +25,7 @@ function App() {
         <Route path="/Signup" element={<Signup/>} />
         <Route path="/Login" element={<Login />} />
         <Route path="/Dashboard" element={<Dashboard/>} />
+        <Route path='/UserDashboard' element={<UserDashboard/>}/>
         <Route path="/DonationDashboard" element={<DonationDashboard/>} />
         <Route path="/DoctorDashboard" element={<DoctorDashboard/>} />
         <Route path="/Donation" element={<Donation />} />
