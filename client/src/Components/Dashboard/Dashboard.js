@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Header from '../Header/Header.js';
-import Footer from '../Footer/Footer.js';
 import { useNavigate } from 'react-router-dom';
 import Sidebar from './Sidebar.js'; 
 import { FiX } from 'react-icons/fi'; 
@@ -46,7 +45,6 @@ const Dashboard = () => {
                 </div>
             </div>
         </div>
-        <Footer/>
         </>
     );
 };

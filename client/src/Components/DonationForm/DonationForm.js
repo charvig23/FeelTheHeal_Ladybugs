@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './DonationForm.css';
-
+import Header from '../Header/Header.js';
 
 function DonationForm() {
   const [description, setDescription] = useState('');
@@ -56,7 +56,7 @@ function DonationForm() {
 
   return (
     <>
-   
+    <Header/>
     <div className='Form-Body'>
     <div className='form-container'>
       <h2>Apply for Donation</h2>

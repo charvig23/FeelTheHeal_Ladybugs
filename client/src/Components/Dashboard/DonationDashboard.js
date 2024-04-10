@@ -19,9 +19,6 @@ function DonationDashboard() {
         const response = await axios.get('http://localhost:4000/api/get-application',{withCredentials: true});
          console.log(response.data);
          console.log(response.status);
-        // if (!response.ok) {
-        //   throw new Error('Failed to fetch data');
-        // }
         const data = await response.data;
         console.log(data);
         setApplicationData(data.data);

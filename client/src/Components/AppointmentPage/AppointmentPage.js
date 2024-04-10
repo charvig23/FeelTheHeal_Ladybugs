@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Header from '../Header/Header.js';
-import Footer from '..//Footer/Footer.js';
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import './AppointmentPage.css';
@@ -215,7 +214,6 @@ const AppointmentPage = () => {
         </div>
       )}
     </div>
-    <Footer/>
     </>
   );
 };
