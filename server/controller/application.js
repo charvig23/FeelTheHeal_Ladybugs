@@ -30,7 +30,8 @@ const submitApplication = async(req,res)=>{
             status: 'pending',
             createdAt: new Date(),
       });
-      const admin = await Admin.findOne({ email: 'jiya@gmail.com' });
+      const emails=['jiya@gmail.com','charvig23@gmail.com']
+      const admin = await Admin.findOne({ email:{$in:emails} });
         if (!admin) {
         return res.status(404).json({ error: 'Admin not found' });
         }
