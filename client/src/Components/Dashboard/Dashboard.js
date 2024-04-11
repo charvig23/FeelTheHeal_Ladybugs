@@ -9,10 +9,10 @@ import {jwtDecode} from 'jwt-decode';
 import { useCookies } from 'react-cookie';
 
 const Dashboard = () => {
-    const [collapsed, setCollapsed] = useState(false); // State to handle sidebar collapse
+    const [collapsed, setCollapsed] = useState(false); 
     
     const navigate = useNavigate();
-    // const userRole = localStorage.getItem('userRole');
+    
     const handleToggleSidebar = () => {
         setCollapsed(!collapsed);
     };
@@ -42,6 +42,7 @@ const Dashboard = () => {
                         {collapsed ? <FaAngleRight /> : <FiX />}
                     </button>
                     {/* Main content goes here */}
+                  
                 </div>
             </div>
         </div>

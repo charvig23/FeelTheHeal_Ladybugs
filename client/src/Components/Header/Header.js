@@ -69,37 +69,37 @@ class Header extends React.Component {
                     </Link>
                 </li>
                 <li className="nav-item">
-                <Link className="nav-link fs-5 px-4" to="/Dashboard">
-                      Dashboard                   </Link>
-                </li>
-                <li className="nav-item">
                 <Link className="nav-link fs-5 px-4" to="/Donation">
                       Donate
                     </Link>
                 </li>
                 <li className="nav-item dropdown">
-                <Link className="nav-link fs-5 px-4" to="/Home">
+                <Link className="nav-link fs-5 px-4" to="/AppointmentPage">
                       Appointment
                     </Link>
                 </li>
+                <li className="nav-item dropdown">
+      <a className="nav-link dropdown-toggle fs-5 px-4" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        More
+      </a>
+      <ul className="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
+        <li><Link className="nav-link fs-5 px-4" to="/Dashboard">
+                      Dashboard                   </Link></li>
+        <li> <Link className="nav-link fs-5 px-4" to="/login" onClick={this.handleLogout}>
+        Logout
+      </Link></li>
+      </ul>
+    </li>
                 <li className="nav-item">
                 <Link className="nav-link fs-5 px-4" to="/DonationForm">
                       Get Help
                     </Link>
                 </li>
-                <li className="nav-item">
-                <Link className="nav-link fs-5 px-4" to="/login">
-                      <button onClick={this.handleLogout}>Logout</button>
-                    </Link>
-                </li>
+               
+                
                 </>
                 ):( 
                   <>
-                  <li className="nav-item dropdown">
-                  <Link className="nav-link fs-5 px-4" to="/insights">
-                      Insights
-                    </Link>
-                </li>
                   <li className="nav-item">
                   <Link className="nav-link fs-5 px-4" to="/Login">
                       Login
@@ -110,11 +110,7 @@ class Header extends React.Component {
                       Sign Up
                     </Link>
                 </li>
-                  <li className="nav-item">
-                  <Link className="nav-link fs-5 px-4" to="/about">
-                      About
-                    </Link>
-                </li></>
+                  </>
                 )}
               </ul>
             </div>
