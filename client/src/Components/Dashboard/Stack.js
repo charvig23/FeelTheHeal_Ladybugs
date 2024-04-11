@@ -1,15 +1,25 @@
 import React from 'react';
 import { Stack as BootstrapStack, Dropdown, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { useState,useEffect } from 'react';
 
-function Stack({ imageUrl, _id, name, location, disasterType, createdAt, buttonText, dropdownOptions, handleViewDetails, handleUpdateStatus }) {
+function Stack({ imageUrl, _id, name, location, disasterType, createdAt, buttonTextView}) {
   const navigate = useNavigate();
+  const [statusChanged, setStatusChanged] = useState(false);
+  const [statusText, setStatusText] = useState('');
   const handleViewDetailsClick = () => {
     navigate(`/application/${_id}`);
   };
 
-  const handleStatusChange = (option) => {
-    handleUpdateStatus(_id, option);
+  const handleUpdateStatus = async (status) => {
+    try {
+      await axios.put(`http://localhost:4000/api/application/${_id}`, { status,review:true },{withCredentials: true});
+      setStatusChanged(true);
+      setStatusText(`Status: ${status === 'approved' ? 'Approved' : 'Rejected'}`);
+    } catch (error) {
+      console.error('Error updating status:', error);
+    }
   };
 
   return (
@@ -29,22 +39,24 @@ function Stack({ imageUrl, _id, name, location, disasterType, createdAt, buttonT
 
       {/* View Details Button */}
       <Button variant="primary" className="stack-button ms-auto" onClick={handleViewDetailsClick}>
-        {buttonText}
+        {buttonTextView}
       </Button>
 
-      {/* Status Dropdown */}
-      <Dropdown className="stack-dropdown ms-auto">
-        <Dropdown.Toggle variant="success" id={`dropdown-basic-${_id}`}>
-          Status
-        </Dropdown.Toggle>
-        <Dropdown.Menu>
-          {dropdownOptions.map((option, index) => (
-            <Dropdown.Item key={index} onClick={() => handleStatusChange(option)}>
-              {option}
-            </Dropdown.Item>
-          ))}
-        </Dropdown.Menu>
-      </Dropdown>
+      {!statusChanged && (
+        <Button variant="success" onClick={() => handleUpdateStatus('approved')}>
+          Approve
+        </Button>
+      )}
+      {/* Reject Button */}
+      {!statusChanged && (
+        <Button variant="danger" onClick={() => handleUpdateStatus('rejected')}>
+          Reject
+        </Button>
+      )}
+      {/* Display status */}
+      {statusChanged && (
+        <div>{statusText}</div>
+      )}
     </BootstrapStack>
   );
 }

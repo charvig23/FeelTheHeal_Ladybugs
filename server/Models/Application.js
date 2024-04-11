@@ -89,6 +89,10 @@ const donationAppSchema = new mongoose.Schema({
         type: Date,
         default: null 
       },
+      review: {
+        type: Boolean,
+        default: false, 
+      },
     createdAt: {
         type: Date,
         default: Date.now,

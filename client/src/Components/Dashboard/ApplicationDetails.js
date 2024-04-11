@@ -35,6 +35,9 @@ function AppDetails() {
   return (
     <div className="app-details">
       <h1>Application Details</h1>
+      {/* <div className="image" >
+        <img src={application.proofs[0]?.url} alt='Image' style={{ width: '50%', height: '80%'}}/>
+      </div> */}
       <p>Name: {application.contactDetails?.name}</p>
       <p>Email: {application.contactDetails?.email}</p>
       <p>Phone: {application.contactDetails?.phone}</p>
@@ -43,6 +46,9 @@ function AppDetails() {
       <p>Details of Loss: {application.detailsOfLoss}</p>
       <p>Compensation Amount: {application.compensationAmount}</p>
       <p>Date of Disaster: {new Date(application.dateOfDisaster).toLocaleDateString()}</p>
+      <p>Bank Name: {application.bankDetails?.bankName}</p>
+      <p>Bank Name: {application.bankDetails?.accountNumber}</p>
+      <p>Bank Name: {application.bankDetails?.accountHolderName}</p>
       <p></p>
     </div>
   );

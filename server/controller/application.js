@@ -6,6 +6,7 @@ const submitApplication = async(req,res)=>{
     try{
         console.log(req.body);
         const userId = req.user._id;
+        console.log(userId);
         const file = req.file;
         console.log(file);
         const dataUriFile = dataUri(file);
@@ -30,6 +31,7 @@ const submitApplication = async(req,res)=>{
             status: 'pending',
             createdAt: new Date(),
       });
+      console.log('New Application:', newApplication);
       const emails=['jiya@gmail.com','charvig23@gmail.com']
       const admin = await Admin.findOne({ email:{$in:emails} });
         if (!admin) {
@@ -75,7 +77,7 @@ const getApplication = async (req, res) => {
 // admin is allowed only to update the status of the application
 const updateApplication = async (req, res, next) => {
     try {
-        const allowedFieldsToUpdate = { status: req.body.status };
+        const allowedFieldsToUpdate = { status: req.body.status , review: req.body.review};
         let application = await Application.findById(req.params.id);
         if (!application) {
             return res.status(404).json({
@@ -113,6 +115,26 @@ const updateApplication = async (req, res, next) => {
     }
 };
 
+const getReviewedApplications = async (req, res) => {
+    try {
+        const reviewedApplications = await Application.find({ review: true });
+        res.status(200).json({ success: true, data: reviewedApplications });
+    } catch (error) {
+        res.status(500).json({ success: false, message: 'Error fetching reviewed applications' });
+    }
+};
+
+const getApprovedApplications = async (req, res) => {
+    try {
+        const approvedApplications = await Application.find({ review: true , status: 'approved' });
+        res.status(200).json({ success: true, data: approvedApplications });
+    } catch (error) {
+        res.status(500).json({ success: false, message: 'Error fetching approved applications' });
+    }
+
+}
+
+
 const getApplicationById =  async (req, res) => {
     try {
       const applicationId = req.params.id;
@@ -138,4 +160,4 @@ const getApplicationById =  async (req, res) => {
     }
   };
 
-module.exports = {submitApplication,getApplication,updateApplication,getApplicationById};
+module.exports = {submitApplication,getApplication,updateApplication,getApplicationById,getReviewedApplications,getApprovedApplications};

@@ -4,15 +4,14 @@ import { Pagination } from 'react-bootstrap';
 import './DonationDashboard.css'; // Import the CSS file
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
 
 function DonationDashboard() {
-  const stacksPerPage = 7; 
+  const stacksPerPage = 7;
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(1); 
-  const [applicationData, setApplicationData] = useState([]); 
+  const [applicationData, setApplicationData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null); 
+  const [error, setError] = useState(null);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -36,7 +35,7 @@ function DonationDashboard() {
   // Calculate the indexes of stacks to be displayed on the current page
   const indexOfLastStack = currentPage * stacksPerPage;
   const indexOfFirstStack = indexOfLastStack - stacksPerPage;
-  const currentStacks = applicationData.slice(indexOfFirstStack, indexOfLastStack);
+  const currentStacks = applicationData.filter(app => !app.review).slice(indexOfFirstStack, indexOfLastStack);
 
   // Change page
   const handlePageChange = (pageNumber) => {
@@ -45,7 +44,6 @@ function DonationDashboard() {
   const handleViewDetailsClick = (_id) => {
     navigate(`/application/${_id}`); 
   };
-  
 
   // Pagination items
   const paginationItems = [];
@@ -75,14 +73,12 @@ function DonationDashboard() {
                 location={stack.location}
                 disasterType={stack.typeOfDisaster}
                 createdAt={stack.createdAt}
-                buttonText='View Details' onClick={() => handleViewDetailsClick(stack._id)}
-                dropdownOptions={['Approve', 'Reject']}
+                buttonTextView='View Details' onClick={() => handleViewDetailsClick(stack._id)}
                 handleViewDetails={() => {}}
                 handleUpdateStatus={() => {}}
               />
             ))
           )}
-
           {/* Pagination */}
           <div className="pagination-container">
             <Pagination>{paginationItems}</Pagination>
