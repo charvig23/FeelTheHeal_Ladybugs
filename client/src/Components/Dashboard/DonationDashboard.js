@@ -58,7 +58,7 @@ function DonationDashboard() {
   return (
     <>
       <div className='Dona-page'>
-        <div><h1>DonationDashboard</h1></div>
+        <div className='Dona-head'><h1>Donations </h1></div>
         <div className="stack-container">
           {/* Display loading message while fetching data */}
           {loading ? (

@@ -3,6 +3,7 @@ import { Stack as BootstrapStack, Dropdown, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useState,useEffect } from 'react';
+import './Stack.css';
 
 function Stack({ imageUrl, _id, name, location, disasterType, createdAt, buttonTextView}) {
   const navigate = useNavigate();
@@ -27,13 +28,13 @@ function Stack({ imageUrl, _id, name, location, disasterType, createdAt, buttonT
       {/* Application Details */}
       <div className="stack-description">
       {imageUrl && (
-          <img src={imageUrl} alt="Application Image" style={{ width: '100px', height: '100px',borderRadius: '5px' }} />
+          <div><img src={imageUrl} className='App-Img' alt="Application Image" style={{ width: '100px', height: '100px',borderRadius: '5px' }} /></div>
         )}
       <div className="stack-details">
-        <p>Name: {name}</p>
-        <p>Location: {location}</p>
-        <p>Disaster Type: {disasterType}</p>
-        <p>Created At: {new Date(createdAt).toLocaleDateString()}</p>
+        <p> <span>Name: </span>{name}</p>
+        <p><span>Location: </span>{location}</p>
+        <p><span>Disaster Type: </span>{disasterType}</p>
+        <p><span>Created At: </span>{new Date(createdAt).toLocaleDateString()}</p>
       </div>
       </div>
 

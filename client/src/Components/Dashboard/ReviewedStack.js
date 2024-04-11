@@ -10,17 +10,18 @@ function ReviewedStack({ imageUrl, _id, name, location, disasterType, createdAt,
     };
 
     return (
+        <>
         <BootstrapStack direction="horizontal" gap={3} className="stack-item">
             {/* Application Details */}
             <div className="stack-description">
                 {imageUrl && (
-                    <img src={imageUrl} alt="Application Image" style={{ width: '100px', height: '100px', borderRadius: '5px' }} />
+                    <img src={imageUrl} className='App-Img' alt="Application Image" style={{ width: '100px', height: '100px', borderRadius: '5px' }} />
                 )}
                 <div className="stack-details">
-                    <p>Name: {name}</p>
-                    <p>Location: {location}</p>
-                    <p>Disaster Type: {disasterType}</p>
-                    <p>Created At: {new Date(createdAt).toLocaleDateString()}</p>
+                    <p><span>Name: </span>{name}</p>
+                    <p><span>Location:</span> {location}</p>
+                    <p><span>Disaster Type: </span>{disasterType}</p>
+                    <p><span>Created At: </span>{new Date(createdAt).toLocaleDateString()}</p>
                 </div>
             </div>
 
@@ -30,8 +31,10 @@ function ReviewedStack({ imageUrl, _id, name, location, disasterType, createdAt,
             </Button>
 
             {/* Status Text */}
-            <div>{statusText}</div>
+            <div style={{ marginRight:'30px'}} >{statusText}</div>
         </BootstrapStack>
+        
+        </>
     );
 }
 

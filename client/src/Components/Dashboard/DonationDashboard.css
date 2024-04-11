@@ -22,6 +22,15 @@
     margin-right: 10px; /* Add right margin to the dropdown */
   }
   .Dona-page{
-    height:200vh;
+    min-height:100vh;
+    max-height: auto;
+    background-color: #dafffb;
+    
   }
-  
+  .Dona-head{
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+.pagination-container{
+  margin-left:5rem;
+}
