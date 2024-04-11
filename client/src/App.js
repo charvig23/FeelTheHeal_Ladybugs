@@ -13,6 +13,7 @@ import DonationDashboard from './Components/Dashboard/DonationDashboard.js';
 import ApplicationDetails from './Components/Dashboard/ApplicationDetails.js';
 import Dashboard from './Components/Dashboard/Dashboard.js';
 import Footer from './Components/Footer/Footer.js';
+import ReviewedApplications from './Components/Dashboard/ReviewedApplications.js';
 import UserDashboard from './Components/UserDashboard/UserDashboard.js';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -34,6 +35,7 @@ function App() {
         <Route path="/DonationForm" element={<DonationForm/>} />
         <Route path="/AppointmentPage" element={<AppointmentPage/>} />
         <Route path="/application/:id" element={<ApplicationDetails/>} />
+        <Route path="/reviewedApplications" element={<ReviewedApplications/>} />
       </Routes>
     <Footer/>
     </Router>

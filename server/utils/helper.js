@@ -6,6 +6,7 @@ const getToken = async (user) => {
     const isAdmin = await Admin.exists({ _id: user._id });
     const role = isAdmin ? 'admin' : 'user';
     const token = jwt.sign({ identifier: user._id, role: role }, process.env.pass_word);
+    console.log(token);
     return token;
   } catch (error) {
     console.error(error);

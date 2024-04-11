@@ -9,5 +9,7 @@ const router = express.Router();
 router.route('/submit/application').post(authMiddleware, singleUpload,  applicationController.submitApplication);
 router.route("/get-application").get(adminAuthMiddleware, applicationController.getApplication);
 router.route("/application/:id").put(adminAuthMiddleware, applicationController.updateApplication).get(adminAuthMiddleware, applicationController.getApplicationById);
+router.get('/reviewedApplications', adminAuthMiddleware, applicationController.getReviewedApplications);
+router.route('/approved/applications').get(applicationController.getApprovedApplications);
 
 module.exports = router;
