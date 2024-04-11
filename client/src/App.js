@@ -13,6 +13,7 @@ import DonationDashboard from './Components/Dashboard/DonationDashboard.js';
 import ApplicationDetails from './Components/Dashboard/ApplicationDetails.js';
 import Dashboard from './Components/Dashboard/Dashboard.js';
 import Footer from './Components/Footer/Footer.js';
+import UserDashboard from './Components/UserDashboard/UserDashboard.js';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 function App() {

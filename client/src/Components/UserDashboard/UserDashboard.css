@@ -1,0 +1,119 @@
+body{
+    margin:0;
+    padding:0;
+}
+.user-dashboard{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:3rem;  
+}
+.U-dashboard-heading{
+    margin-left:3rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.ds-body{
+    background-color: #176B87;
+
+    color:white;
+}
+  .dashboard-header {
+    margin-bottom: 20px;
+    background-color: #dafffb;
+    border-radius: 4px;
+
+  }
+  .list-text{
+    margin-left:3rem;
+  }
+  .user-info {
+    display: flex;
+    align-items: center;
+    color:black;
+  }
+  
+  .user-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  .user-details p {
+    margin: 0;
+    font-weight: bold;
+  }
+  
+  .booked-appointments{
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .ds-body .donations{
+    display: flex;
+    justify-content: space-around;
+  }
+  .donation-head{
+    text-align: center;
+  }
+  .ds-body h2 {
+    margin: 0 0 10px;
+  }
+  
+ 
+  .email {
+    color: #666;
+  }
+  .donations-made , .donations-applied  {
+   width:60%;
+    margin: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .donations-made h2, .donations-applied h2 {
+    color: #dafffb;
+  }
+  /* .donations-made{
+    background-color: #4c65af;
+  }
+  .donations-applied{
+    background-color: #666;
+  } */
+  /* .user-dashboard,
+.U-dashboard-heading,
+.dashboard-header,
+.user-info,
+.user-details,
+.booked-appointments,
+.donation-head,
+.donations,
+.donations-made,
+.donations-applied {
+  border: 1px solid black;
+} */
+.dashboard-header{
+    border: 1px solid rgba(0, 0, 0, 0.244);
+    padding: 10px;
+}
+.booked-appointments div ,.donations-made div ,.donations-applied div{
+    border: 1px solid #64ccc5;
+    padding: 10px;
+    margin-bottom: 10px;
+    width:90%;
+    margin-bottom: 0.6rem;
+    color:#e9e3e3;
+    border-radius: 4px;
+    box-shadow: 0 0 10px #64ccc5;
+    /* animation: glow-animation 1s infinite alternate; */
+  }
+  /* @keyframes glow-animation {
+    from {
+      box-shadow: 0 0 10px #64ccc5;
+    }
+    to {
+      box-shadow: 0 0 15px #64ccc5;
+    }
+  } */

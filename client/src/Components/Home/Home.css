@@ -30,9 +30,55 @@ margin-bottom: 3rem;
 .About-img{
     height:100%;
     width:100%;
+    border: 1px solid rgba(0, 0, 0, 0);
+  border-radius: 10px;
    
 }
 .About-us-heading{
     text-align: center;
     margin-top: 3rem;
 }
+  
+  
+  .Card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .home-card {
+    position: relative;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 255, 0); 
+    
+  }
+  
+  .home-card:hover {
+    box-shadow: 0 0 20px #64ccc5; /* Adjust the color and intensity of the glow */
+  }
+  
+@keyframes popup {
+  0% {
+    transform: scale(0);
+  }
+  
+  100% {
+    transform: scale(1);
+  }
+}
+
+
+.About-us-para:hover {
+  animation: popup 0.5s ease forwards;
+}
+
+
+.About-us-para {
+  position: relative;
+  
+}
+
+
+  
