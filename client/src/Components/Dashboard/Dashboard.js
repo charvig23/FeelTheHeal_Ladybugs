@@ -42,6 +42,8 @@ const Dashboard = () => {
                         {collapsed ? <FaAngleRight /> : <FiX />}
                     </button>
                     {/* Main content goes here */}
+                    <div><h1>Welcome to Feel the heal</h1></div>
+                    
                   
                 </div>
             </div>
