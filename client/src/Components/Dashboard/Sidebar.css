@@ -5,7 +5,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   height: 100vh;
   font-size: 17px;
-  background: #201515;
 }
 .logoutlink{
   text-decoration: none;
