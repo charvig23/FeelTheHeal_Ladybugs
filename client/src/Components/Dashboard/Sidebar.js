@@ -20,10 +20,15 @@ class Sidebar extends Component {
       <ProSidebar collapsed={collapsed} className="Sidebar">
         <Menu  iconShape="square">
           <MenuItem >Welcome!</MenuItem>
-          
-            <MenuItem className="submenu-item"> <span>Name: Charvi</span>
-            <span>Email:</span></MenuItem>
-    
+          <SubMenu title="Profile" label="Profile" icon={<FiUser />} iconClosed={<FaCog />} iconOpened={<FaCog />}>
+  <MenuItem>
+    <span>Name: Charvi</span>
+  </MenuItem>
+  <MenuItem>
+    <span>Email: charvig23gmail.com</span>
+  </MenuItem>
+</SubMenu>
+
           <SubMenu title="Application" label="Donation" icon={<FiList />} iconClosed={<FaCog />} iconOpened={<FaCog />}>
             <MenuItem component={<Link to="/DonationDashboard" />} icon={<FiGift />}>Donations</MenuItem>
             <MenuItem  component={<Link to="/reviewedApplications" />} icon={<FiGift />} >Reviewed Applications</MenuItem>

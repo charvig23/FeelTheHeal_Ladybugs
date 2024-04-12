@@ -5,20 +5,20 @@
   
   .dashboard-container {
     display: flex;
-    background-color: #176B87;
-    color:white;
+     background-color: #176B87;
   }
   .content {
     flex-grow: 1;
   } 
   .Sidebar {
     width: 250px; 
-    background-color: #277182;
+    background-color: #04364a;
     height: 90vh;
   }
   .dash-big-container{
     display:flex;
     height:80vh;
+     color:white; 
   }
   .dash-left-container{
     background-color: #176B87;
@@ -48,4 +48,5 @@
   .dash-head{
    margin-left: 12rem;
    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+   color:white; 
   }

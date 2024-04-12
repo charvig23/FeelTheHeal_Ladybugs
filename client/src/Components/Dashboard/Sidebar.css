@@ -4,17 +4,18 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   height: 100vh;
-  background: #fefdfd;
   font-size: 17px;
-}
-.Sidebar{
-  background: #a8d5e5;
+  background: #201515;
 }
 .logoutlink{
   text-decoration: none;
-  color: black;
+  color:black;
+ 
 }
 .submenu-item span:first-child::after {
   content: "";
   display: block;
+}
+.Sidebar{
+  background: #0e1011;
 }
