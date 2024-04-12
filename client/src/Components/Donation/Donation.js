@@ -3,6 +3,7 @@ import './Donation.css';
 import Header from '../Header/Header.js';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import Timer from '../Timer/Timer.js';
 // Sample data for listings
 // const listingsData = [
 //   { 
@@ -114,7 +115,7 @@ const Donation = () => {
                 <p>Description: {listing.detailsOfLoss}</p>
                 <p>Location: {listing.location}</p>
                 <p>Compensation: ₹{listing.compensationAmount}</p>
-                <p>Deadline: {new Date(listing.deadline).toLocaleDateString()}</p>
+                <Timer deadline={new Date(listing.deadline)} />
                 <button onClick={() => handleViewDetailsClick(listing._id)}>View Details</button>
               </div>
             </div>
