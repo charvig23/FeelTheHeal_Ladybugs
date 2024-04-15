@@ -25,7 +25,7 @@ function Login() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post("http://localhost:4000/auth/login", {
+      const response = await axios.post("https://feel-the-heal-ladybugs.vercel.app/auth/login", {
         email: email,
         password: password,
       }, {
