@@ -47,7 +47,7 @@ const Donation = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get('http://localhost:4000/api/approved/applications',{withCredentials: true});
+      const response = await axios.get('https://feel-the-heal-ladybugs.vercel.app/api/approved/applications',{withCredentials: true});
       const data = await response.data;
       setApplicationData(data.data);
       console.log(data.data);
