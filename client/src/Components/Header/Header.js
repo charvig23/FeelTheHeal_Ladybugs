@@ -18,7 +18,7 @@ class Header extends React.Component {
   }
 
   handleLogout = async () => {
-    const logout = await axios.get("http://localhost:4000/auth/logout",{withCredentials:true});
+    const logout = await axios.get("https://feel-the-heal-ladybugs.vercel.app/auth/logout",{withCredentials:true});
     localStorage.clear();
     this.setState({ isLoggedIn: false });
   };
