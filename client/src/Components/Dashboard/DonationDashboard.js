@@ -15,7 +15,7 @@ function DonationDashboard() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/api/get-application',{withCredentials: true});
+        const response = await axios.get('https://feel-the-heal-ladybugs.vercel.app/api/get-application',{withCredentials: true});
          console.log(response.data);
          console.log(response.status);
         const data = await response.data;
