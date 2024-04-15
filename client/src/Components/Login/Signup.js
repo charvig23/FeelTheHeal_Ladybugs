@@ -26,7 +26,7 @@ function Signup() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post("http://localhost:4000/auth/register/user", {
+      const response = await axios.post("https://feel-the-heal-ladybugs.vercel.app/auth/register/user", {
           Name: Name,
           email: email,
           password: password,
