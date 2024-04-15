@@ -17,7 +17,7 @@ function ReviewedApplications() {
     useEffect(() => {
         const fetchApplications = async () => {
             try {
-                const response = await axios.get('http://localhost:4000/api/reviewedApplications', { withCredentials: true });
+                const response = await axios.get('https://feel-the-heal-ladybugs.vercel.app/api/reviewedApplications', { withCredentials: true });
                 setApplications(response.data.data);
             } catch (error) {
                 console.error('Error fetching reviewed applications:', error);
