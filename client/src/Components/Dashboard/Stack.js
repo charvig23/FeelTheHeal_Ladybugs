@@ -15,7 +15,7 @@ function Stack({ imageUrl, _id, name, location, disasterType, createdAt, buttonT
 
   const handleUpdateStatus = async (status) => {
     try {
-      await axios.put(`http://localhost:4000/api/application/${_id}`, { status,review:true },{withCredentials: true});
+      await axios.put(`https://feel-the-heal-ladybugs.vercel.app/api/application/${_id}`, { status,review:true },{withCredentials: true});
       setStatusChanged(true);
       setStatusText(`Status: ${status === 'approved' ? 'Approved' : 'Rejected'}`);
     } catch (error) {
