@@ -14,7 +14,8 @@ if(process.env.NODE_ENV !== "production"){
 
 // using middlewares
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: 'https://feel-the-heal-ladybugs',
+  methods:["POST","GET","PUT"],
   credentials: true,
 }));
 app.use(express.json());
