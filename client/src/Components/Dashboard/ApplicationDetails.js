@@ -12,7 +12,7 @@ function AppDetails() {
   useEffect(() => {
     const fetchApplication = async () => {
       try {
-        const response = await axios.get(`http://localhost:4000/api/application/${id}`,{withCredentials: true});
+        const response = await axios.get(`https://feel-the-heal-ladybugs.vercel.app/api/application/${id}`,{withCredentials: true});
         console.log('API Response:', response.data);
         setApplication(response.data.data);
         setLoading(false);
